@@ -5,7 +5,7 @@
     <h2>Enter your Name: <input type="text" v-model=name></h2>
     <button @click="changeName">Click to change name</button>
       <h1 v-if="buttonClicked">{{ inputName }}</h1>
-    <button @click="callApi">Get Weather</button><br>
+    Enter City:<input type="text" v-model=city><button @click="callApi">Get Weather</button><br>
     {{weatherInfo}}
   </div>
 </template>
@@ -19,6 +19,7 @@ export default {
     return {
       message: 'Testing Azure+Github Deployment',
       name:"",
+      city:"",
       inputName:"",
       buttonClicked:true,
       weatherInfo:null
@@ -31,10 +32,19 @@ export default {
     },
     callApi(){
       console.log('Calling API')
-      axios.get('/api/test').then(response=>{
+      console.log(this.city)
+      axios({
+        url:'/api/test',
+        method:'get',
+        params:{
+          city:this.city
+        }
+      }).then(response=>{
         console.log(response.data)
         this.weatherInfo = response.data
-      }).catch
+      }).catch(err=>{
+        console.log(err)
+      })
     }
   }
 }
