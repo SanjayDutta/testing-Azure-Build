@@ -1,0 +1,9 @@
+[
+  {
+    "name": "index",
+    "path": "/",
+    "component": "H:\\\\nuxt\\\\testingAzureBuild\\\\pages\\\\index.vue",
+    "chunkName": "pages/index",
+    "_name": "_030dddac"
+  }
+]
